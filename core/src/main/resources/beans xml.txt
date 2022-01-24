@@ -1,0 +1,23 @@
+this how to do xml bean configs in spring
+
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+<!--  default-init-method="" used in beans tag for a global init method for all beans -->
+<!--  default-destroy-method="" used in beans tag for a global destroy method for all beans -->
+
+    <bean id="numGenerator" class="com.ahzam.NumberGenerator" />
+
+    <!-- init-method="" runs when bean is created -->
+    <bean id="game" class="com.ahzam.Game">
+<!--        <constructor-arg ref="numGenerator" />-->
+        <!-- Name is field in the class and ref is a bean id-->
+        <property name="numGen" ref="numGenerator" />
+
+    </bean>
+
+    <bean class="org.springframework.context.annotation.CommonAnnotationBeanPostProcessor" />
+
+</beans>
